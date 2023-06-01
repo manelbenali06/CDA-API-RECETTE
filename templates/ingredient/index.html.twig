@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ingrédients{% endblock %}
+
+{% block body %}
+<h1> Gérer les ingrédients</h1>
+
+{% for message in app.flashes('success') %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endfor %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        {% for ingredient in ingredients %}
+        <tr>
+            <td>{{ ingredient.name }}</td>
+           
+        </tr>
+        {% else %}
+        
+        <tr>
+            <td colspan="3">no records found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+ {# display navigation #}
+<div class="navigation d-flex justify-content-center">
+    {{ knp_pagination_render(ingredients) }}
+</div>
+{% endblock %}

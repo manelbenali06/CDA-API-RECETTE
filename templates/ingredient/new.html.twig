@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel ingredient
+{% endblock %}
+
+{% block body %}
+	<h1>Créer un nouvel ingrédient</h1>
+
+	{{ include('ingredient/_form.html.twig', {button_label:'Créer'}) }}
+{% endblock %}

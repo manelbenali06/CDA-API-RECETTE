@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes{% endblock %}
+
+{% block body %}
+
+    <h1>Gérer les recettes</h1>
+    
+    <div class="row pb-5">
+    {% for recipe in recipes %}
+        <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+            <div class="product-item text-center">
+                <img src="{{ vich_uploader_asset(recipe) }}"class="card-img-top w-75">
+                <h4 class="card-title pt-2">{{ recipe.name }}</h4>
+            </div>
+            <div class="pt-2 pb-3 text-center">
+                <a href="{{ path('recipe_show', {'id': recipe.id}) }}" class="btn btn-secondary">Regarder la recette</a>
+            </div>
+             {# display navigation #}
+
+        </div>
+ {% endfor %}
+<div class="navigation d-flex justify-content-center">
+    {{ knp_pagination_render(recipes) }}
+</div>
+{% endblock %}
+
+

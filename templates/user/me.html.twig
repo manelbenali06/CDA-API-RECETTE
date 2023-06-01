@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+
+{% block body %}
+
+    <h2>Mes informations</h2>
+    <div>Email : {{ user.email }}</div>
+    <div>Vérifiée : {{ user.isVerified }}</div>
+    <div>UserName : {{ user.userName }}</div>
+    <div>Role : 
+        {% for role in user.roles %}
+            {{ role }} - 
+        {% endfor %}
+    </div>
+
+    <h2>Mes recettes</h2>
+    <ul>
+        {% for recipe in user.recipes %}
+            <li>{{ recipe.name }}</li> 
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

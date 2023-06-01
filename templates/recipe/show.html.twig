@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails - Recette{% endblock %}
+
+{% block body %}
+
+ <h1>Détails de la recette</h1>
+
+    <div class="row">
+        <div class="col-md-5">
+            <img src="/images/recipes/{{ recipe.imageName }}" alt="{{ recipe.name }}" class="img-fluid p-5">
+        </div>
+        <div class="col-md-7 my-auto">  
+         <h3>{{ recipe.name }}</h3>  
+            <p class="card-text">Publié le {{ recipe.createdAt|date('d/m/Y') }}</p>
+            <p class="card-text">Catégorie : {{ recipe.category.name }}</p>
+            <h5>Ingrédients pour cette recette :</h5>
+            <ol>
+                {% for ingredient in recipe.ingredients %}
+                    <li>{{ ingredient.name }}</li>
+                {% endfor %}
+            </ol>
+                {% if recipe.steps is not empty %}
+            <h5>Étapes de préparation :</h5>
+            <ol>
+                {% for step in recipe.steps %}
+                    <li>{{ step.content }}</li>
+                {% endfor %}
+            </ol>
+                {% else %}
+                <p>Cette recette n'a pas encore d'étapes de préparation.</p>
+                {% endif %}</p>
+        </div>
+    </div>
+         
+        <a href="{{ path('recipe_index') }}" class="btn btn-primary">Revenir à la liste</a>  
+    
+{% endblock %}

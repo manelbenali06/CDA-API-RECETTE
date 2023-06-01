@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer recette{% endblock %}
+
+{% block body %}
+<h1>Editer recette</h1>
+
+{{ include('recipe/_form.html.twig', {'button_label': 'Editer'}) }}
+{% endblock %}

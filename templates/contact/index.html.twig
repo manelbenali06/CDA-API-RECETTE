@@ -1,0 +1,37 @@
+   {% extends 'base.html.twig' %}
+   {% block title %}Contact{% endblock %}
+
+   {% block body %}
+   <div class="container">
+        <h2 class="contact-title">Nous contacter</h2>
+        <p class="contact-description">N'hésitez pas à prendre contact avec notre équipe, nous vous répondrons dans les meilleurs délais.</p>
+        
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-info">{{ message }}</div>
+        {% endfor %}
+        
+        {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.prenom) }}
+                {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            
+            <div class="form-group">
+                {{ form_label(form.nom) }}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            
+            <div class="form-group">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            
+            <div class="form-group">
+                {{ form_label(form.content) }}
+                {{ form_widget(form.content, {'attr': {'class': 'form-control', 'rows': 6}}) }}
+            </div>   
+
+            <button class="btn btn-primary" type="submit">Envoyer</button>
+        {{ form_end(form) }}
+    </div>
+    {% endblock %}
